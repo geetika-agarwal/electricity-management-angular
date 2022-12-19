@@ -7,6 +7,9 @@ import { HelperLoginComponent } from './helper-login/helper-login.component';
 import { ConsumerLoginComponent } from './consumer-login/consumer-login.component';
 import { AdminComponent } from './admin/admin.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AmountDisplayPipe } from './amount-display.pipe';
+import { DateDisplayPipe } from './date-display.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,12 +17,15 @@ import { HttpClientModule } from '@angular/common/http';
     AdminLoginComponent,
     HelperLoginComponent,
     ConsumerLoginComponent,
-    AdminComponent
+    AdminComponent,
+    AmountDisplayPipe,
+    DateDisplayPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

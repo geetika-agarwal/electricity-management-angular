@@ -1,9 +1,12 @@
+import { HttpErrorResponse, HttpEvent, HttpHeaderResponse, HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { AdminService } from '../admin.service';
 import { Area } from '../area';
+import { Bill } from '../bill';
 import { City } from '../city';
 import { Consumer } from '../consumer';
 import { ConsumerType } from '../consumer-type';
+import { Helper } from '../helper';
 
 @Component({
   selector: 'app-admin',
@@ -16,6 +19,13 @@ export class AdminComponent {
   consumerType: ConsumerType[] = []
   cities: City[] = []
   consumers: Consumer[] = []
+  helpers: Helper[] = []
+  bills: Bill[] = []
+  areasByCity: Area[] = []
+
+  cityName: string = ""
+  areaName: string = ""
+  newAreaName: string = ""
 
   constructor(public adminService: AdminService) {
     this.adminService.viewAreas().subscribe(areas =>  {
@@ -32,6 +42,14 @@ export class AdminComponent {
 
     this.adminService.viewConsumers().subscribe(consumer => {
       this.consumers = consumer;
+    })
+
+    this.adminService.viewHelpers().subscribe(helper => {
+      this.helpers = helper;
+    })
+
+    this.adminService.viewBills().subscribe(bill => {
+      this.bills = bill;
     })
   }
 
@@ -103,5 +121,87 @@ export class AdminComponent {
 
    closeAreaTable() {
     document.getElementById("all-areas")!.style.display = "none";
+  }
+
+   /*------------------------------------View All Helpers--------------------------------------------*/
+
+  showHelperTable() {
+    document.getElementById("all-helpers")!.style.display = "block";
+  }
+
+   closeHelperTable() {
+    document.getElementById("all-helpers")!.style.display = "none";
+  }
+
+  /*------------------------------------View All Bills--------------------------------------------*/
+
+  showBillTable() {
+    document.getElementById("all-bills")!.style.display = "block";
+  }
+
+   closeBillTable() {
+    document.getElementById("all-bills")!.style.display = "none";
+  }
+
+  /*------------------------------------View Area By City--------------------------------------------*/
+  showAreaCityForm() {
+    document.getElementById("area-by-city")!.style.display = "block";
+  }
+
+  closeAreaCityForm() {
+    document.getElementById("area-by-city")!.style.display = "none";
+    this.closeAreaCityTable();
+  }
+
+  getAreaByCity(data: any) {
+    if(data.cityName === "") {
+      alert("Select a city")
+    } else {
+      this.adminService.viewAreaByCity(data.cityName).subscribe(area => {
+      this.areasByCity = area;
+    })
+    this.showAreaCityTable();
+    }
+  }
+
+  showAreaCityTable() {
+    document.getElementById("all-area-city")!.style.display = "block";
+  }
+
+  closeAreaCityTable() {
+    document.getElementById("all-area-city")!.style.display = "none";
+  }
+
+  /*------------------------------------Modify Area Name--------------------------------------------*/
+
+  showModifyAreaNameForm() {
+    document.getElementById("modify-area-name")!.style.display = "block";
+  }
+
+  closeModifyAreaNameForm() {
+    document.getElementById("modify-area-name")!.style.display = "none";
+  }
+
+  modifyArea(data: {areaName: string, newAreaName: string}) {
+    if(data.areaName === "") {
+      alert("Please select an Area");
+    } else if (data.newAreaName.trim() === "") {
+      alert("Please Write the New Area Name");
+    } else if (data.newAreaName.trim() === data.areaName.trim()) {
+      alert("Old Name is same as the New Name")
+    }
+
+    else {
+        this.adminService.modifyAreaName(data).subscribe(
+          (          data: any) => console.log('success', data),
+          (          error: HttpErrorResponse) => {
+            if(error.status === 202)
+              alert(error.statusText + " - Modofied Successfully");
+            else
+              alert(error.statusText)
+          }
+
+        )
+    }
   }
 }
