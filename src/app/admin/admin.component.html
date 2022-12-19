@@ -1,5 +1,5 @@
 <button (click)="showRegisterConsumerForm()">Register Consumer</button>
-<form id="register-consumer-form" method="post">
+<form id="register-consumer-form" class="forms" method="post">
   <div class="close-button-wrap">
     <button
       type="submit"
@@ -33,7 +33,7 @@
   <div class="form-group">
     <label for="AreaName">Area Name</label> &nbsp;
     <select id="AreaName">
-      <option value="">Select a City</option>
+      <option value="">Select a Area</option>
       <option *ngFor="let area of areas" value="{{ area.areaName }}">
         <h4>{{ area.areaName }}</h4>
       </option>
@@ -57,10 +57,145 @@
       placeholder="Enter Password"
       required
     />
-    <div class="submit-wrapper">
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
+  </div>
+  <div class="submit-wrapper">
+    <button type="submit" class="btn btn-primary">Submit</button>
   </div>
 </form>
 
-<button (click)>Add City</button>
+<button (click)="showAddCityForm()">Add City</button>
+<form id="add-city-form" class="forms" method="post">
+  <div class="close-button-wrap">
+    <button type="submit" (click)="closeAddCityForm()" class="btn close-button">
+      X
+    </button>
+  </div>
+  <div class="form-group">
+    <label for="Name">City Name</label>
+    <input
+      type="text"
+      name="city-name"
+      class="form-control"
+      id="Name"
+      placeholder="Enter city name"
+      required
+    />
+  </div>
+  <div class="submit-wrapper">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+
+<button (click)="showAddAreaForm()">Add Area</button>
+<form id="add-area-form" class="forms" method="post">
+  <div class="close-button-wrap">
+    <button type="submit" (click)="closeAddAreaForm()" class="btn close-button">
+      X
+    </button>
+  </div>
+  <div class="form-group">
+    <label for="AreaName">Area Name</label>
+    <input
+      type="text"
+      name="area-name"
+      class="form-control"
+      id="AreaName"
+      placeholder="Enter area name"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="CityName">City Name</label> &nbsp;
+    <select id="CityName">
+      <option value="">Select a City</option>
+      <option *ngFor="let city of cities" value="{{ city.name }}">
+        <h4>{{ city.name }}</h4>
+      </option>
+    </select>
+  </div>
+  <div class="submit-wrapper">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+
+<button (click)="showConsumerTable()">View All Consumers</button>
+<table class="tables" id="all-consumers">
+  <div class="close-button-wrap">
+    <button
+      type="submit"
+      (click)="closeConsumerTable()"
+      class="btn close-button"
+    >
+      X
+    </button>
+  </div>
+  <tr>
+    <th>Email</th>
+    <th>Name</th>
+    <th>Area Name</th>
+    <th>Consumer Type</th>
+  </tr>
+  <tr *ngFor="let consumer of consumers">
+    <td>{{ consumer.email }}</td>
+    <td>{{ consumer.name }}</td>
+    <td>{{ consumer.area_name }}</td>
+    <td>{{ consumer.consumer_type_name }}</td>
+  </tr>
+</table>
+
+<button (click)="showConsumerTypeTable()">View All Consumer Types</button>
+<table class="tables" id="all-consumer-types">
+  <div class="close-button-wrap">
+    <button
+      type="submit"
+      (click)="closeConsumerTypeTable()"
+      class="btn close-button"
+    >
+      X
+    </button>
+  </div>
+  <tr>
+    <th>ID</th>
+    <th>Type</th>
+    <th>Rate</th>
+  </tr>
+  <tr *ngFor="let ct of consumerType">
+    <td>{{ ct.id }}</td>
+    <td>{{ ct.typeName }}</td>
+    <td>{{ ct.rate }}</td>
+  </tr>
+</table>
+
+<button (click)="showCityTable()">View All Cities</button>
+<table class="tables" id="all-cities">
+  <div class="close-button-wrap">
+    <button type="submit" (click)="closeCityTable()" class="btn close-button">
+      X
+    </button>
+  </div>
+  <tr>
+    <th>S no.</th>
+    <th>City Name</th>
+  </tr>
+  <tr *ngFor="let city of cities">
+    <td>{{ city.id }}</td>
+    <td>{{ city.name }}</td>
+  </tr>
+</table>
+
+<button (click)="showAreaTable()">View All Areas</button>
+<table class="tables" id="all-areas">
+  <div class="close-button-wrap">
+    <button type="submit" (click)="closeAreaTable()" class="btn close-button">
+      X
+    </button>
+  </div>
+  <tr>
+    <th>S no.</th>
+    <th>Area Name</th>
+  </tr>
+  <tr *ngFor="let area of areas">
+    <td>{{ area.id }}</td>
+    <td>{{ area.areaName }}</td>
+  </tr>
+</table>

@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http'
 import { Consumer } from './consumer';
 import { Area } from './area';
 import { ConsumerType } from './consumer-type';
+import { City } from './city';
 
 
 @Injectable({
@@ -11,10 +12,6 @@ import { ConsumerType } from './consumer-type';
 })
 export class AdminService {
   constructor(private http: HttpClient) { }
-
-  // getCity():Observable<CityResponse[]> {
-  //   return this.http.get<CityResponse[]>("http://localhost:8080/admin/city")
-  // }
 
   registerConsumer(consumer: Consumer):Observable<String> {
     return this.http.post<String>("http://localhost:8080/admin/register-consumer", consumer);
@@ -26,5 +23,13 @@ export class AdminService {
 
   viewConsumerType():Observable<ConsumerType[]>{
     return this.http.get<ConsumerType[]>("http://localhost:8080/admin/view-consumer-type");
+  }
+
+  viewCity():Observable<City[]> {
+    return this.http.get<City[]>("http://localhost:8080/admin/city");
+  }
+
+  viewConsumers():Observable<Consumer[]> {
+    return this.http.get<Consumer[]>("http://localhost:8080/admin/consumers")
   }
 }

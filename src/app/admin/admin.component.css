@@ -1,4 +1,4 @@
-#register-consumer-form {
+.forms {
   margin: 1rem auto;
   width: 50%;
   display: none;
@@ -12,4 +12,10 @@
 .submit-wrapper {
   margin: 1rem auto;
   text-align: center;
+}
+
+.tables {
+  margin: 1rem auto;
+  width: fit-content;
+  display: none;
 }
