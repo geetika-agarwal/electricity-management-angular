@@ -1,0 +1,66 @@
+<button (click)="showRegisterConsumerForm()">Register Consumer</button>
+<form id="register-consumer-form" method="post">
+  <div class="close-button-wrap">
+    <button
+      type="submit"
+      (click)="closeRegistrationForm()"
+      class="btn close-button"
+    >
+      X
+    </button>
+  </div>
+  <div class="form-group">
+    <label for="EmailAddress">Email address</label>
+    <input
+      type="email"
+      name="email"
+      class="form-control"
+      id="EmailAddress"
+      placeholder="Enter email"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="Name">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="Name"
+      placeholder="Enter Name"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="AreaName">Area Name</label> &nbsp;
+    <select id="AreaName">
+      <option value="">Select a City</option>
+      <option *ngFor="let area of areas" value="{{ area.areaName }}">
+        <h4>{{ area.areaName }}</h4>
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="CustomerType">Customer Type Name</label> &nbsp;
+    <select id="CustomerType">
+      <option value="">Select a Consumer Type</option>
+      <option *ngFor="let ct of consumerType" value="{{ ct.typeName }}">
+        <h2>{{ ct.typeName }}</h2>
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="Password">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="Password"
+      placeholder="Enter Password"
+      required
+    />
+    <div class="submit-wrapper">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>
+
+<button (click)>Add City</button>

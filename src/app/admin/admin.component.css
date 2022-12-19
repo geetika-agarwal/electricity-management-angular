@@ -1,0 +1,15 @@
+#register-consumer-form {
+  margin: 1rem auto;
+  width: 50%;
+  display: none;
+}
+
+.close-button-wrap {
+  text-align: right;
+  background-color: none;
+}
+
+.submit-wrapper {
+  margin: 1rem auto;
+  text-align: center;
+}
