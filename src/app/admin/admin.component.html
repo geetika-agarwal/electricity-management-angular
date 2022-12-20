@@ -1,5 +1,10 @@
 <button (click)="showRegisterConsumerForm()">Register Consumer</button>
-<form id="register-consumer-form" class="forms" method="post">
+<form
+  id="register-consumer-form"
+  class="forms"
+  #registerConsumer="ngForm"
+  (ngSubmit)="registerconsumer(registerConsumer.value)"
+>
   <div class="close-button-wrap">
     <button
       type="submit"
@@ -18,6 +23,7 @@
       id="EmailAddress"
       placeholder="Enter email"
       required
+      ngModel
     />
   </div>
   <div class="form-group">
@@ -28,22 +34,28 @@
       id="Name"
       placeholder="Enter Name"
       required
+      name="name"
+      ngModel
     />
   </div>
   <div class="form-group">
     <label for="AreaName">Area Name</label> &nbsp;
-    <select id="AreaName">
-      <option value="">Select a Area</option>
-      <option *ngFor="let area of areas" value="{{ area.areaName }}">
+    <select id="AreaName" name="areaName" [(ngModel)]="registerAreaName">
+      <option ngValue="" selected>Select a Area</option>
+      <option *ngFor="let area of areas" ngValue="{{ area.areaName }}">
         <h4>{{ area.areaName }}</h4>
       </option>
     </select>
   </div>
   <div class="form-group">
     <label for="CustomerType">Customer Type Name</label> &nbsp;
-    <select id="CustomerType">
-      <option value="">Select a Consumer Type</option>
-      <option *ngFor="let ct of consumerType" value="{{ ct.typeName }}">
+    <select
+      id="CustomerType"
+      name="consumerTypeName"
+      [(ngModel)]="registerConsumerType"
+    >
+      <option ngValue="" selected>Select a Consumer Type</option>
+      <option *ngFor="let ct of consumerType" ngValue="{{ ct.typeName }}">
         <h2>{{ ct.typeName }}</h2>
       </option>
     </select>
@@ -56,6 +68,8 @@
       id="Password"
       placeholder="Enter Password"
       required
+      name="password"
+      ngModel
     />
   </div>
   <div class="submit-wrapper">
@@ -64,7 +78,12 @@
 </form>
 
 <button (click)="showAddCityForm()">Add City</button>
-<form id="add-city-form" class="forms" method="post">
+<form
+  id="add-city-form"
+  class="forms"
+  #addCity="ngForm"
+  (ngSubmit)="addcity(addCity.value)"
+>
   <div class="close-button-wrap">
     <button type="submit" (click)="closeAddCityForm()" class="btn close-button">
       X
@@ -79,6 +98,8 @@
       id="Name"
       placeholder="Enter city name"
       required
+      name="city"
+      ngModel
     />
   </div>
   <div class="submit-wrapper">
@@ -87,7 +108,12 @@
 </form>
 
 <button (click)="showAddAreaForm()">Add Area</button>
-<form id="add-area-form" class="forms" method="post">
+<form
+  id="add-area-form"
+  class="forms"
+  #addArea="ngForm"
+  (ngSubmit)="addarea(addArea.value)"
+>
   <div class="close-button-wrap">
     <button type="submit" (click)="closeAddAreaForm()" class="btn close-button">
       X
@@ -102,13 +128,15 @@
       id="AreaName"
       placeholder="Enter area name"
       required
+      name="area"
+      ngModel
     />
   </div>
   <div class="form-group">
     <label for="CityName">City Name</label> &nbsp;
-    <select id="CityName">
-      <option value="">Select a City</option>
-      <option *ngFor="let city of cities" value="{{ city.name }}">
+    <select id="CityName" name="city" [(ngModel)]="cityName">
+      <option ngValue="">Select a City</option>
+      <option *ngFor="let city of cities" ngValue="{{ city.name }}">
         <h4>{{ city.name }}</h4>
       </option>
     </select>
@@ -244,6 +272,249 @@
   </tr>
 </table>
 
+<button (click)="showBillByCidForm()">View All Bills By Consumer Email</button>
+<form
+  #billByCid="ngForm"
+  (ngSubmit)="getBillByCid(billByCid.value)"
+  class="forms"
+  id="bill-by-cid-form"
+>
+  <div class="close-button-wrap">
+    <button
+      type="submit"
+      (click)="closeBillByCidForm()"
+      class="btn close-button"
+    >
+      X
+    </button>
+  </div>
+  <div class="form-group">
+    <label for="Email">Email</label> &nbsp;
+    <input
+      type="email"
+      name="email"
+      class="form-control"
+      id="Email"
+      placeholder="Enter email"
+      required
+      ngModel
+    />
+  </div>
+  <div class="submit-wrapper">
+    <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+  </div>
+</form>
+<table class="tables" id="all-bills-by-cid">
+  <div class="close-button-wrap">
+    <button
+      type="submit"
+      (click)="closeBillByCidTable()"
+      class="btn close-button"
+    >
+      X
+    </button>
+  </div>
+  <tr>
+    <th>Bill No.</th>
+    <th>Email</th>
+    <th>City</th>
+    <th>Area</th>
+    <th>Bill Date</th>
+    <th>Units Consumed</th>
+    <th>Total Amount</th>
+  </tr>
+  <tr *ngFor="let bill of billsByCid">
+    <td>{{ bill.bill_id }}</td>
+    <td>{{ bill.email }}</td>
+    <td>{{ bill.city }}</td>
+    <td>{{ bill.area }}</td>
+    <td>{{ bill.date | dateDisplay }}</td>
+    <td>{{ bill.units }}</td>
+    <td>{{ bill.amount | amountDisplay }}</td>
+  </tr>
+</table>
+
+<button (click)="showBillByMnYForm()">View All Bills By Month and Year</button>
+<form
+  #billByMnY="ngForm"
+  (ngSubmit)="getBillByMnY(billByMnY.value)"
+  class="forms"
+  id="bill-by-mny-form"
+>
+  <div class="close-button-wrap">
+    <button
+      type="submit"
+      (click)="closeBillByMnYForm()"
+      class="btn close-button"
+    >
+      X
+    </button>
+  </div>
+  <div class="form-group">
+    <label for="month">Month</label> &nbsp;
+    <select id="Month" name="month" [(ngModel)]="Month">
+      <option ngValue="">Select a Month</option>
+      <option *ngFor="let m of months" ngValue="{{ m }}">
+        <h4>{{ m }}</h4>
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="Year">Year</label> &nbsp;
+    <input type="number" id="Year" name="year" min="2000" max="2022" ngModel />
+  </div>
+  <div class="submit-wrapper">
+    <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+  </div>
+</form>
+<table class="tables" id="all-bills-by-mny">
+  <div class="close-button-wrap">
+    <button
+      type="submit"
+      (click)="closeBillByMnYTable()"
+      class="btn close-button"
+    >
+      X
+    </button>
+  </div>
+  <tr>
+    <th>Bill No.</th>
+    <th>Email</th>
+    <th>City</th>
+    <th>Area</th>
+    <th>Bill Date</th>
+    <th>Units Consumed</th>
+    <th>Total Amount</th>
+  </tr>
+  <tr *ngFor="let bill of billsByMnY">
+    <td>{{ bill.bill_id }}</td>
+    <td>{{ bill.email }}</td>
+    <td>{{ bill.city }}</td>
+    <td>{{ bill.area }}</td>
+    <td>{{ bill.date | dateDisplay }}</td>
+    <td>{{ bill.units }}</td>
+    <td>{{ bill.amount | amountDisplay }}</td>
+  </tr>
+</table>
+
+<button (click)="showBillByCityForm()">View All Bills By City</button>
+<form
+  #billByCity="ngForm"
+  (ngSubmit)="getBillByCity(billByCity.value)"
+  class="forms"
+  id="bill-by-city"
+>
+  <div class="close-button-wrap">
+    <button
+      type="submit"
+      (click)="closeBillByCityForm()"
+      class="btn close-button"
+    >
+      X
+    </button>
+  </div>
+  <div class="form-group">
+    <label for="City">City</label> &nbsp;
+    <select id="City" name="city" [(ngModel)]="City">
+      <option ngValue="">Select a City</option>
+      <option *ngFor="let c of cities" ngValue="{{ c.name }}">
+        <h4>{{ c.name }}</h4>
+      </option>
+    </select>
+  </div>
+  <div class="submit-wrapper">
+    <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+  </div>
+</form>
+<table class="tables" id="all-bills-by-city">
+  <div class="close-button-wrap">
+    <button
+      type="submit"
+      (click)="closeBillByCityTable()"
+      class="btn close-button"
+    >
+      X
+    </button>
+  </div>
+  <tr>
+    <th>Bill No.</th>
+    <th>Email</th>
+    <th>City</th>
+    <th>Area</th>
+    <th>Bill Date</th>
+    <th>Units Consumed</th>
+    <th>Total Amount</th>
+  </tr>
+  <tr *ngFor="let bill of billsByCity">
+    <td>{{ bill.bill_id }}</td>
+    <td>{{ bill.email }}</td>
+    <td>{{ bill.city }}</td>
+    <td>{{ bill.area }}</td>
+    <td>{{ bill.date | dateDisplay }}</td>
+    <td>{{ bill.units }}</td>
+    <td>{{ bill.amount | amountDisplay }}</td>
+  </tr>
+</table>
+
+<button (click)="showBillByAreaForm()">View All Bills By Area</button>
+<form
+  #billByArea="ngForm"
+  (ngSubmit)="getBillByArea(billByArea.value)"
+  class="forms"
+  id="bill-by-area"
+>
+  <div class="close-button-wrap">
+    <button
+      type="submit"
+      (click)="closeBillByAreaForm()"
+      class="btn close-button"
+    >
+      X
+    </button>
+  </div>
+  <div class="form-group">
+    <label for="Area">Area</label> &nbsp;
+    <select id="Area" name="area" [(ngModel)]="Area">
+      <option ngValue="">Select a Area</option>
+      <option *ngFor="let a of areas" ngValue="{{ a.areaName }}">
+        <h4>{{ a.areaName }}</h4>
+      </option>
+    </select>
+  </div>
+  <div class="submit-wrapper">
+    <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+  </div>
+</form>
+<table class="tables" id="all-bills-by-area">
+  <div class="close-button-wrap">
+    <button
+      type="submit"
+      (click)="closeBillByAreaTable()"
+      class="btn close-button"
+    >
+      X
+    </button>
+  </div>
+  <tr>
+    <th>Bill No.</th>
+    <th>Email</th>
+    <th>City</th>
+    <th>Area</th>
+    <th>Bill Date</th>
+    <th>Units Consumed</th>
+    <th>Total Amount</th>
+  </tr>
+  <tr *ngFor="let bill of billsByArea">
+    <td>{{ bill.bill_id }}</td>
+    <td>{{ bill.email }}</td>
+    <td>{{ bill.city }}</td>
+    <td>{{ bill.area }}</td>
+    <td>{{ bill.date | dateDisplay }}</td>
+    <td>{{ bill.units }}</td>
+    <td>{{ bill.amount | amountDisplay }}</td>
+  </tr>
+</table>
+
 <button (click)="showAreaCityForm()">View Areas Based on City</button>
 <form
   #areaByCity="ngForm"
@@ -324,6 +595,131 @@
       placeholder="Enter New Area Name"
       id="NewAreaName"
       name="newAreaName"
+      ngModel
+      required
+    />
+  </div>
+  <div class="submit-wrapper">
+    <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+  </div>
+</form>
+
+<button (click)="showModifyCityAreaNameForm()">
+  Modify City Name For an Area
+</button>
+<form
+  #modifyCityAreaName="ngForm"
+  (ngSubmit)="modifycityarea(modifyCityAreaName.value)"
+  class="forms"
+  id="modify-city-area-name"
+>
+  <div class="close-button-wrap">
+    <button
+      type="submit"
+      (click)="closeModifyCityAreaNameForm()"
+      class="btn close-button"
+    >
+      X
+    </button>
+  </div>
+  <div class="form-group">
+    <label for="AreaName">Area Name</label> &nbsp;
+    <select id="AreaName" name="areaName" [(ngModel)]="areaName">
+      <option ngValue="">Select an Area</option>
+      <option *ngFor="let area of areas" ngValue="{{ area.areaName }}">
+        <h4>{{ area.areaName }}</h4>
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="CityName">New City Name</label> &nbsp;
+    <select id="CityName" name="newCityName" [(ngModel)]="cityName">
+      <option ngValue="">Select a City</option>
+      <option *ngFor="let city of cities" ngValue="{{ city.name }}">
+        <h4>{{ city.name }}</h4>
+      </option>
+    </select>
+  </div>
+  <div class="submit-wrapper">
+    <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+  </div>
+</form>
+
+<button (click)="showModifyCityNameForm()">Modify City Name</button>
+<form
+  #modifyCityName="ngForm"
+  (ngSubmit)="modifyCity(modifyCityName.value)"
+  class="forms"
+  id="modify-city-name"
+>
+  <div class="close-button-wrap">
+    <button
+      type="submit"
+      (click)="closeModifyCityNameForm()"
+      class="btn close-button"
+    >
+      X
+    </button>
+  </div>
+  <div class="form-group">
+    <label for="CityName">City Name</label> &nbsp;
+    <select id="CityName" name="cityName" [(ngModel)]="cityName">
+      <option ngValue="">Select an City</option>
+      <option *ngFor="let city of cities" ngValue="{{ city.name }}">
+        <h4>{{ city.name }}</h4>
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="NewCityName">New City Name:</label> &nbsp;
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter New City Name"
+      id="NewCityName"
+      name="newCityName"
+      ngModel
+      required
+    />
+  </div>
+  <div class="submit-wrapper">
+    <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+  </div>
+</form>
+
+<button (click)="showModifyRateForm()">Modify Consumer Type Rate Name</button>
+<form
+  #modifyRate="ngForm"
+  (ngSubmit)="modifyrate(modifyRate.value)"
+  class="forms"
+  id="modify-rate"
+>
+  <div class="close-button-wrap">
+    <button
+      type="submit"
+      (click)="closeModifyRateForm()"
+      class="btn close-button"
+    >
+      X
+    </button>
+  </div>
+  <div class="form-group">
+    <label for="ConsumerType">Consumer Type</label> &nbsp;
+    <select id="CityName" name="consumerType" [(ngModel)]="consumertype">
+      <option ngValue="">Select an Consumer Type</option>
+      <option *ngFor="let ct of consumerType" ngValue="{{ ct.typeName }}">
+        <h4>{{ ct.typeName }}</h4>
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="NewRate">New Rate:</label> &nbsp;
+    <input
+      type="number"
+      class="form-control"
+      placeholder="Enter New Rate"
+      id="NewRate"
+      name="newRate"
       ngModel
       required
     />
