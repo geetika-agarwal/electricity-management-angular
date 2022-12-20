@@ -10,6 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AmountDisplayPipe } from './amount-display.pipe';
 import { DateDisplayPipe } from './date-display.pipe';
 import { FormsModule } from '@angular/forms';
+import { HelperComponent } from './helper/helper.component';
+import { ConsumerComponent } from './consumer/consumer.component';
+import { RegisterConsumerComponent } from './register-consumer/register-consumer.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { FormsModule } from '@angular/forms';
     ConsumerLoginComponent,
     AdminComponent,
     AmountDisplayPipe,
-    DateDisplayPipe
+    DateDisplayPipe,
+    HelperComponent,
+    ConsumerComponent,
+    RegisterConsumerComponent
   ],
   imports: [
     BrowserModule,

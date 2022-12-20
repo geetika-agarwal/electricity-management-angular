@@ -1,0 +1,125 @@
+<button (click)="showBillTable()">View All Bills</button>
+<table class="tables" id="bill-view">
+  <div class="close-button-wrap">
+    <button type="submit" (click)="closeBillTable()" class="btn close-button">
+      X
+    </button>
+  </div>
+  <tr>
+    <th>Bill No.</th>
+    <th>Email</th>
+    <th>City</th>
+    <th>Area</th>
+    <th>Bill Date</th>
+    <th>Units Consumed</th>
+    <th>Total Amount</th>
+  </tr>
+  <tr *ngFor="let bill of bills">
+    <td>{{ bill.bill_id }}</td>
+    <td>{{ bill.email }}</td>
+    <td>{{ bill.city }}</td>
+    <td>{{ bill.area }}</td>
+    <td>{{ bill.date | dateDisplay }}</td>
+    <td>{{ bill.units }}</td>
+    <td>{{ bill.amount | amountDisplay }}</td>
+  </tr>
+</table>
+
+<button (click)="showDeleteForm()">Delete Account</button>
+<form
+  #deleteConsumer="ngForm"
+  id="delete-form"
+  (ngSubmit)="deleteconsumer(deleteConsumer.value)"
+  class="forms"
+>
+  <h1>Delete Account</h1>
+  <h4>For confirmation of delete, please re-enter your details</h4>
+  <div class="close-button-wrap">
+    <button type="submit" (click)="closeDeleteForm()" class="btn close-button">
+      X
+    </button>
+  </div>
+  <div class="form-group">
+    <label for="Email">Email</label> &nbsp;
+    <input
+      type="email"
+      class="form-control"
+      placeholder="Email"
+      id="Email"
+      name="email"
+      ngModel
+      required
+    />
+  </div>
+  <div class="submit-wrapper">
+    <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+  </div>
+</form>
+
+<button (click)="showUpdateNameForm()">Update Consumer Name</button>
+<form
+  #updateName="ngForm"
+  id="update-name-form"
+  (ngSubmit)="updatename(updateName.value)"
+  class="forms"
+>
+  <h1>Update Name</h1>
+  <div class="close-button-wrap">
+    <button
+      type="submit"
+      (click)="closeUpdateNameForm()"
+      class="btn close-button"
+    >
+      X
+    </button>
+  </div>
+  <div class="form-group">
+    <label for="Name">New Name</label> &nbsp;
+    <input
+      type="text"
+      class="form-control"
+      placeholder="New Name"
+      id="Name"
+      name="name"
+      ngModel
+      required
+    />
+  </div>
+  <div class="submit-wrapper">
+    <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+  </div>
+</form>
+
+<button (click)="showUpdatePasswordForm()">Update Consumer Password</button>
+<form
+  #updatePassword="ngForm"
+  id="update-password-form"
+  (ngSubmit)="updatepassword(updatePassword.value)"
+  class="forms"
+>
+  <h1>Update Password</h1>
+  <div class="close-button-wrap">
+    <button
+      type="submit"
+      (click)="closeUpdatePasswordForm()"
+      class="btn close-button"
+    >
+      X
+    </button>
+  </div>
+  <div class="form-group">
+    <label for="Password">New Password</label> &nbsp;
+    <input
+      type="password"
+      class="form-control"
+      placeholder="New Password"
+      id="Password"
+      name="password"
+      ngModel
+      required
+    />
+  </div>
+  <div class="submit-wrapper">
+    <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+  </div>
+</form>

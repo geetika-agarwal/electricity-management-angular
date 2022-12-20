@@ -1,8 +1,16 @@
-<div>
-  <a routerLink="/consumerLogin"><button>Consumer Login</button></a>
-  <a routerLink="/helperLogin"><button>Helper Login</button></a>
-  <a routerLink="/adminLogin"><button>Admin Login</button></a>
-  <a routerLink="/admin"><button>Admin</button></a>
+<div (activate)="checkLogin()">
+  <a routerLink="/consumerLogin"
+    ><button id="ConsumerLoginButton">Consumer Login</button></a
+  >
+  <a routerLink="/helperLogin"
+    ><button id="HelperLoginButton">Helper Login</button></a
+  >
+  <a routerLink="/adminLogin"
+    ><button id="AdminLoginButton">Admin Login</button></a
+  >
+  <a routerLink="/"
+    ><button (click)="logoutUser()" id="LogoutButton">Logout</button></a
+  >
 </div>
 
-<router-outlet></router-outlet>
+<router-outlet (activate)="checkLogin()"></router-outlet>

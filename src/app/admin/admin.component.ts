@@ -196,7 +196,7 @@ export class AdminComponent {
           (          data: any) => console.log('success', data),
           (          error: HttpErrorResponse) => {
             if(error.status === 202)
-              alert(error.statusText + " - Modofied Successfully");
+              alert(error.statusText + " - Modified Successfully");
             else
               alert(error.statusText)
           }

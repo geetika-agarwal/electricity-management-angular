@@ -3,13 +3,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminComponent } from './admin/admin.component';
 import { ConsumerLoginComponent } from './consumer-login/consumer-login.component';
+import { ConsumerComponent } from './consumer/consumer.component';
 import { HelperLoginComponent } from './helper-login/helper-login.component';
+import { HelperComponent } from './helper/helper.component';
+import { RegisterConsumerComponent } from './register-consumer/register-consumer.component';
 
 const routes: Routes = [
   {path: 'adminLogin', component: AdminLoginComponent},
   {path: 'helperLogin', component: HelperLoginComponent},
   {path: 'consumerLogin', component: ConsumerLoginComponent},
-  {path: 'admin', component: AdminComponent}
+  {path: 'admin', component: AdminComponent},
+  {path: 'helper', component: HelperComponent},
+  {path: 'consumer', component: ConsumerComponent},
+  {path: 'consumerRegister', component: RegisterConsumerComponent}
 ];  // sets up routes constant where you define your routes
 
 @NgModule({

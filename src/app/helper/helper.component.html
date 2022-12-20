@@ -1,0 +1,29 @@
+<form class="forms" #addbill="ngForm" (ngSubmit)="addBill(addbill.value)">
+  <div class="form-group">
+    <label for="EmailAddress">Email address</label>
+    <input
+      type="email"
+      name="email"
+      class="form-control"
+      id="EmailAddress"
+      placeholder="Enter email"
+      required
+      ngModel
+    />
+  </div>
+  <div class="form-group">
+    <label for="Units">Units Consumed</label>
+    <input
+      type="number"
+      class="form-control"
+      id="Units"
+      name="units"
+      placeholder="Enter units consumed"
+      ngModel
+      required
+    />
+  </div>
+  <div class="submit-wrapper">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>

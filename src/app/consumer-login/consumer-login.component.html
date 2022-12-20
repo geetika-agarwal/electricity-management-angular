@@ -1,1 +1,35 @@
-<p>consumer-login works!</p>
+<form
+  #loginConsumer="ngForm"
+  (ngSubmit)="loginconsumer(loginConsumer.value)"
+  class="forms"
+>
+  <div class="form-group">
+    <label for="Email">Email</label> &nbsp;
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Email"
+      id="Email"
+      name="email"
+      ngModel
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="Password">Password</label> &nbsp;
+    <input
+      type="password"
+      class="form-control"
+      placeholder="Password"
+      id="Password"
+      name="password"
+      ngModel
+      required
+    />
+  </div>
+  <div class="submit-wrapper">
+    <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+  </div>
+</form>
+<small>New Consumer?: </small>
+<a routerLink="/consumerRegister">Register Here</a>

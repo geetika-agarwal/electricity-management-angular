@@ -15,6 +15,10 @@ import { Bill } from './bill';
 export class AdminService {
   constructor(private http: HttpClient) { }
 
+  loginAdmin(data: any): Observable<any> {
+    return this.http.get<any>(`http://localhost:8080/admin/login/?email=${data.email}&password=${data.password}`)
+  }
+
   registerConsumer(consumer: Consumer):Observable<String> {
     return this.http.post<String>("http://localhost:8080/admin/register-consumer", consumer);
   }
