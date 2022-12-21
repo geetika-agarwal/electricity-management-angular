@@ -10,7 +10,7 @@ import { AdminService } from '../admin.service';
 export class AdminLoginComponent {
 
   constructor(public adminService: AdminService) {  }
-
+  
   loginadmin(data: {email: string, password: string}) {
     this.adminService.loginAdmin(data).subscribe(
       (data:any) => console.log(data),
