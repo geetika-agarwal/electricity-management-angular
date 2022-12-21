@@ -1,63 +1,88 @@
-<form
-  #registerConsumer="ngForm"
-  (ngSubmit)="registerconsumer(registerConsumer.value)"
-  class="forms"
->
-  <div class="form-group">
-    <label for="Email">Email</label> &nbsp;
-    <input
-      type="email"
-      class="form-control"
-      placeholder="Email"
-      id="Email"
-      name="email"
-      ngModel
-      required
-    />
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h2 class="page-heading">Register Consumer</h2>
+      <hr class="page-hr" />
+    </div>
   </div>
-  <div class="form-group">
-    <label for="Name">Name</label> &nbsp;
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Name"
-      id="Email"
-      name="name"
-      ngModel
-      required
-    />
+  <div class="row">
+    <form
+      #registerConsumer="ngForm"
+      (ngSubmit)="registerconsumer(registerConsumer.value)"
+      class="forms"
+    >
+      <div class="form-group">
+        <label for="Email">Email <span class="astriek">*</span></label> &nbsp;
+        <input
+          type="email"
+          class="form-control"
+          placeholder="Email"
+          id="Email"
+          name="email"
+          ngModel
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="Name">Name <span class="astriek">*</span></label> &nbsp;
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Name"
+          id="Email"
+          name="name"
+          ngModel
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="AreaName">Area Name <span class="astriek">*</span></label>
+        &nbsp;
+        <select id="AreaName" name="areaName" [(ngModel)]="areaName">
+          <option ngValue="">Select a Area</option>
+          <option *ngFor="let area of areas" ngValue="{{ area.areaName }}">
+            <h4>{{ area.areaName }}</h4>
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="CustomerType"
+          >Customer Type Name <span class="astriek">*</span></label
+        >
+        &nbsp;
+        <select
+          id="CustomerType"
+          name="consumerTypeName"
+          [(ngModel)]="consumerTypeName"
+        >
+          <option ngValue="">Select a Consumer Type</option>
+          <option *ngFor="let ct of consumerType" ngValue="{{ ct.typeName }}">
+            <h2>{{ ct.typeName }}</h2>
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="Password">Password <span class="astriek">*</span></label>
+        &nbsp;
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Password"
+          id="Password"
+          name="password"
+          ngModel
+          required
+        />
+      </div>
+      <div class="submit-wrapper">
+        <button type="submit" class="btn btn-submit" value="submit">
+          Submit
+        </button>
+      </div>
+    </form>
   </div>
-  <div class="form-group">
-    <label for="AreaName">Area Name</label> &nbsp;
-    <select id="AreaName" name="areaName" [(ngModel)]="areaName">
-      <option ngValue="">Select a Area</option>
-      <option *ngFor="let area of areas" ngValue="{{ area.areaName }}">
-        <h4>{{ area.areaName }}</h4>
-      </option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="CustomerType">Customer Type Name</label> &nbsp;
-    <select id="CustomerType" name="consumerTypeName"  [(ngModel)]="consumerTypeName">
-      <option ngValue="">Select a Consumer Type</option>
-      <option *ngFor="let ct of consumerType" ngValue="{{ ct.typeName }}">
-        <h2>{{ ct.typeName }}</h2>
-      </option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="Password">Password</label> &nbsp;
-    <input
-      type="password"
-      class="form-control"
-      placeholder="Password"
-      id="Password"
-      name="password"
-      ngModel
-      required
-    />
-  </div>
-  <div class="submit-wrapper">
-    <button type="submit" class="btn btn-primary" value="submit">Submit</button>
-  </div>
-</form>
+  <br />
+  <br />
+  <br />
+  <br />
+</div>

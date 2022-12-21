@@ -89,7 +89,7 @@ export class ConsumerComponent {
   }
 
   closeUpdatePasswordForm() {
-    document.getElementById("update-Password-form")!.style.display = "none"
+    document.getElementById("update-password-form")!.style.display = "none"
   }
 
   updatepassword(data:any) {

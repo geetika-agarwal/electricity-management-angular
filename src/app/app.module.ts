@@ -14,6 +14,7 @@ import { HelperComponent } from './helper/helper.component';
 import { ConsumerComponent } from './consumer/consumer.component';
 import { RegisterConsumerComponent } from './register-consumer/register-consumer.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
     HelperComponent,
     ConsumerComponent,
     RegisterConsumerComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
