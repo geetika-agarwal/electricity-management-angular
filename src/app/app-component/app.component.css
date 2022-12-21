@@ -1,3 +1,38 @@
+.navbar {
+  background-color: #BAD7E9;
+}
+
+.navbar-brand {
+  color: #2B3467;
+  padding: 10px 10px;
+  font-family: 'Cormorant';
+  font-weight: bold;
+}
+
+.btn {
+  padding: 8px 0.7rem;
+  background-color: #EB455F;
+  margin-left: 1rem;
+  color: #FCFFE7;
+  font-family: 'Varela Round';
+}
+
+.btn:hover {
+  box-shadow: 0px 2px 4px #000000;
+}
+
 #LogoutButton {
   display: none;
+}
+
+footer {
+  background-color: #EB455F;
+  color: white;
+  font-family: 'Varela round';
+  text-align: center;
+  padding: 10px;
+  margin-top: 2rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }

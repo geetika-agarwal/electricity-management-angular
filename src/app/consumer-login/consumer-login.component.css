@@ -1,8 +1,52 @@
 .forms {
-  margin: 1rem auto;
+  margin: 2rem auto;
   width: 50%;
 }
 
 .submit-wrapper {
   text-align: center;
+}
+
+.page-heading {
+  text-align: center;
+  margin-top: 2rem;
+  font-family: 'Cinzel';
+  font-weight: bold;
+  color: #2B3467;
+}
+
+.page-hr {
+  width: 25%;
+  background-color: #EB455F;
+  height: 2px;
+}
+
+label {
+  font-family: 'Carmorant';
+  color: #2B3467;
+  font-size: 25px;
+  margin-bottom: 5px;
+  margin-left: -25px;
+}
+
+input {
+  background-color: #fbfcf2;
+  border: 1px solid #2B3467;
+  font-family: 'Varela Round';
+  color: #2B3467;
+}
+
+.btn-submit {
+  background-color: #BAD7E9;
+  color: #2B3467;
+  font-family: 'Varela Round';
+}
+
+.btn-submit:hover {
+  box-shadow: 0px 2px 4px #000000;
+}
+
+small {
+  font-family: 'Varela Round';
+  margin-left: 7rem;
 }

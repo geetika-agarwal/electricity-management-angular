@@ -1,16 +1,58 @@
-<div (activate)="checkLogin()">
-  <a routerLink="/consumerLogin"
-    ><button id="ConsumerLoginButton">Consumer Login</button></a
-  >
-  <a routerLink="/helperLogin"
-    ><button id="HelperLoginButton">Helper Login</button></a
-  >
-  <a routerLink="/adminLogin"
-    ><button id="AdminLoginButton">Admin Login</button></a
-  >
-  <a routerLink="/"
-    ><button (click)="logoutUser()" id="LogoutButton">Logout</button></a
-  >
-</div>
+<nav class="navbar navbar-expand-sm">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="/">Electricity Management System</a>
+    </div>
+    <div (activate)="checkLogin()" class="options" ml-auto>
+      <ul class="nav navbar-nav">
+        <li class="consumerli">
+          <a routerLink="/consumerLogin"
+            ><button id="ConsumerLoginButton" class="btn consumer-btn">
+              Consumer Login
+            </button></a
+          >
+        </li>
+        <li class="helperli">
+          <a routerLink="/helperLogin"
+            ><button id="HelperLoginButton" class="btn helper-btn">
+              Helper Login
+            </button></a
+          >
+        </li>
 
+        <li class="adminli">
+          <a routerLink="/adminLogin"
+            ><button id="AdminLoginButton" class="btn admin-btn">
+              Admin Login
+            </button></a
+          >
+        </li>
+
+        <li class="logoutli">
+          <a routerLink="/">
+            <button
+              (click)="logoutUser()"
+              id="LogoutButton"
+              class="btn logout-btn"
+            >
+              Logout
+            </button></a
+          >
+          <a routerLink="/"
+            ><button
+              (click)="logoutUser()"
+              id="LogoutButton"
+              class="btn logout-btn"
+            >
+              Logout
+            </button></a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <router-outlet (activate)="checkLogin()"></router-outlet>
+<footer>
+  <small>Copyright &copy; Electricty Management System @ 2022</small>
+</footer>

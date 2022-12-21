@@ -1,5 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { AdminService } from '../admin.service';
+import { Consumer } from '../consumer';
 import { HelperService } from '../helper.service';
 
 @Component({
@@ -9,10 +11,21 @@ import { HelperService } from '../helper.service';
 })
 export class HelperComponent {
 
-  constructor(public helperService: HelperService) {}
+  consumers: Consumer[] = []
+
+  consumer: string = ''
+  constructor(public helperService: HelperService, public adminService: AdminService) {
+    this.adminService.viewConsumers().subscribe(consumer => {
+      this.consumers = consumer;
+    })
+  }
 
   addBill(data: {email: string, units: number}) {
-    this.helperService.AddBill(data).subscribe(
+    if(data.email === "" || data.units == 0) {
+      alert("Enter all the bill details!!!")
+    }
+    else {
+      this.helperService.AddBill(data).subscribe(
       (data:any) => console.log(data),
       (error: HttpErrorResponse) => {
         if(error.status === 202) {
@@ -23,5 +36,6 @@ export class HelperComponent {
         }
       }
     )
+    }
   }
 }

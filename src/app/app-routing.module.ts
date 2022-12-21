@@ -7,6 +7,7 @@ import { ConsumerComponent } from './consumer/consumer.component';
 import { HelperLoginComponent } from './helper-login/helper-login.component';
 import { HelperComponent } from './helper/helper.component';
 import { RegisterConsumerComponent } from './register-consumer/register-consumer.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Routes = [
   {path: 'adminLogin', component: AdminLoginComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'admin', component: AdminComponent},
   {path: 'helper', component: HelperComponent},
   {path: 'consumer', component: ConsumerComponent},
-  {path: 'consumerRegister', component: RegisterConsumerComponent}
+  {path: 'consumerRegister', component: RegisterConsumerComponent},
+  {path: '', component: WelcomeComponent}
 ];  // sets up routes constant where you define your routes
 
 @NgModule({

@@ -1,0 +1,19 @@
+.welcome-heading {
+  margin-top: 10rem;
+  font-family: 'Cinzel', 'Times New Roman';
+  font-weight: bolder;
+  color: #2B3467;
+  padding-left: 1.5rem;
+}
+
+.welcome-tag {
+  font-family: 'Cormorant', 'serif';
+  font-weight: bold;
+  font-size: 23px;
+  color: #E26868;
+  padding-left: 2.3rem;
+}
+
+.welcome-img {
+  margin-top: 4rem;
+}

@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { HelperComponent } from './helper/helper.component';
 import { ConsumerComponent } from './consumer/consumer.component';
 import { RegisterConsumerComponent } from './register-consumer/register-consumer.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { RegisterConsumerComponent } from './register-consumer/register-consumer
     DateDisplayPipe,
     HelperComponent,
     ConsumerComponent,
-    RegisterConsumerComponent
+    RegisterConsumerComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,

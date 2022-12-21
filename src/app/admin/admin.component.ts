@@ -69,6 +69,7 @@ export class AdminComponent {
   /*------------------------------------Consumer Registration--------------------------------------------*/
 
   closeRegistrationForm() {
+    document.querySelector("form")?.reset();
     document.getElementById("register-consumer-form")!.style.display = "none";
   }
 
@@ -131,10 +132,12 @@ export class AdminComponent {
   /*------------------------------------Add Area--------------------------------------------*/
 
   showAddAreaForm() {
+    document.querySelector("form")?.reset();
     document.getElementById("add-area-form")!.style.display = "block";
   }
 
    closeAddAreaForm() {
+    document.querySelector("form")?.reset();
     document.getElementById("add-area-form")!.style.display = "none";
   }
 

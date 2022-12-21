@@ -17,7 +17,7 @@ export class HelperLoginComponent {
         if(error.status === 202) {
           alert("Login Successful")
           window.sessionStorage.setItem("email", data.email);
-          window.location.pathname="/"
+          window.location.pathname="/helper"
         } else {
           alert(error.error)
         }

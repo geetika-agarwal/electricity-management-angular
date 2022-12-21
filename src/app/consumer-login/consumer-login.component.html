@@ -1,35 +1,51 @@
-<form
-  #loginConsumer="ngForm"
-  (ngSubmit)="loginconsumer(loginConsumer.value)"
-  class="forms"
->
-  <div class="form-group">
-    <label for="Email">Email</label> &nbsp;
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Email"
-      id="Email"
-      name="email"
-      ngModel
-      required
-    />
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h2 class="page-heading">Consumer Login</h2>
+      <hr class="page-hr" />
+    </div>
   </div>
-  <div class="form-group">
-    <label for="Password">Password</label> &nbsp;
-    <input
-      type="password"
-      class="form-control"
-      placeholder="Password"
-      id="Password"
-      name="password"
-      ngModel
-      required
-    />
+  <div class="row">
+    <form
+      #loginConsumer="ngForm"
+      (ngSubmit)="loginconsumer(loginConsumer.value)"
+      class="forms"
+    >
+      <div class="form-group">
+        <label for="Email">Email</label> &nbsp;
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Email"
+          id="Email"
+          name="email"
+          ngModel
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="Password">Password</label> &nbsp;
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Password"
+          id="Password"
+          name="password"
+          ngModel
+          required
+        />
+      </div>
+      <div class="submit-wrapper">
+        <button type="submit" class="btn btn-submit" value="submit">
+          Submit
+        </button>
+      </div>
+    </form>
   </div>
-  <div class="submit-wrapper">
-    <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+  <div class="row">
+    <small
+      >New Consumer? &nbsp;
+      <a routerLink="/consumerRegister">Register Here</a></small
+    >
   </div>
-</form>
-<small>New Consumer?: </small>
-<a routerLink="/consumerRegister">Register Here</a>
+</div>
